@@ -250,7 +250,9 @@ namespace pyRevitLabs.TargetApps.Revit {
             {"20130531_2115", ( "13.0.3", "2013 Update Release 3" )},
             {"20120821_1330", ( "13.0", "2013 LT First Customer Ship" )},
             {"20130531_0300", ( "13.1", "2013 LT Update Release 1" )},
-            {"20130308_1515", ( "14.0.0", "2014 First Customer Ship" )},
+
+            // tested on local machine
+            {"20130308_1515", ( "13.03.08151", "2014 First Customer Ship" )},
             {"20130709_2115", ( "14.0.1", "2014 Update Release 1" )},
             {"20131024_2115", ( "14.0.2", "2014 Update Release 2" )},
             {"20140709_2115", ( "14.0.3", "2014 Update Release 3" )},

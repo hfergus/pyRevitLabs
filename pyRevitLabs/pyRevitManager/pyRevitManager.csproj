@@ -138,6 +138,7 @@
     <ProjectReference Include="..\pyRevitLabs.TargetApps.Revit\pyRevitLabs.TargetApps.Revit.csproj">
       <Project>{ed0fb7a2-e4a8-4490-a020-73140bfbce0b}</Project>
       <Name>pyRevitLabs.TargetApps.Revit</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -176,7 +177,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetDir)lib\win32\x64\git2-6311e88.dll" "$(TargetDir)git2-6311e88.dll"
+    <PostBuildEvent>copy "$(TargetDir)lib\win32\x64\git2-8e0b172.dll" "$(TargetDir)git2-8e0b172.dll"
 rd /S /Q "$(TargetDir)lib"
 REM del /Q "$(TargetDir)*.pdb"
 REM del /Q "$(TargetDir)*.config"
