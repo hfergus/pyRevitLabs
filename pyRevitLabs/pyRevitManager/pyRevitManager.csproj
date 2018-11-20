@@ -163,11 +163,14 @@
     <PackageReference Include="docopt.net">
       <Version>0.6.1.10</Version>
     </PackageReference>
+    <PackageReference Include="Expression.Blend.Sdk">
+      <Version>1.0.2</Version>
+    </PackageReference>
     <PackageReference Include="NETStandard.Library">
       <Version>2.0.3</Version>
     </PackageReference>
     <PackageReference Include="NLog">
-      <Version>4.5.10</Version>
+      <Version>4.5.11</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
