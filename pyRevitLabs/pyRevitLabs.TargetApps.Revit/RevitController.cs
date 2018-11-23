@@ -197,6 +197,12 @@ namespace pyRevitLabs.TargetApps.Revit {
             return false;
         }
 
+        public int ProcessId {
+            get {
+                return _process.Id;
+            }
+        }
+
         public string Module {
             get {
                 return _process.MainModule.FileName;
@@ -250,7 +256,9 @@ namespace pyRevitLabs.TargetApps.Revit {
             {"20130531_2115", ( "13.0.3", "2013 Update Release 3" )},
             {"20120821_1330", ( "13.0", "2013 LT First Customer Ship" )},
             {"20130531_0300", ( "13.1", "2013 LT Update Release 1" )},
-            {"20130308_1515", ( "14.0.0", "2014 First Customer Ship" )},
+
+            // tested on local machine
+            {"20130308_1515", ( "13.03.08151", "2014 First Customer Ship" )},
             {"20130709_2115", ( "14.0.1", "2014 Update Release 1" )},
             {"20131024_2115", ( "14.0.2", "2014 Update Release 2" )},
             {"20140709_2115", ( "14.0.3", "2014 Update Release 3" )},
@@ -306,6 +314,7 @@ namespace pyRevitLabs.TargetApps.Revit {
             {"20170419_0315", ("17.0.1128.0", "2017.2.1")},
             {"20170816_0615", ("17.0.1146.0", "2017.2.2")},
             {"20171027_0315", ("17.0.1150.0", "2017.2.3")},
+            {"20181011_1645", ("17.0.1158.0", "2017.2.4")},
             {"20170223_1515", ("18.0.0.420", "2018 First Customer Ship")},
             {"20170421_2315", ("18.0.1.2", "2018.0.1")},
             {"20170525_2315", ("18.0.2.11", "2018.0.2")},
@@ -319,6 +328,7 @@ namespace pyRevitLabs.TargetApps.Revit {
             {"20180328_1800", ("19.0.1.1", "2019 Update for Trial Build")},
             {"20180518_1600", ("19.0.10.18", "2019.0.1")},
             {"20180806_1515", ("19.1.0.112", "2019.1")},
+            {"20180927_2315", ("19.0.20.1", "2019.0.2")},
         };
 
         private static Regex BuildNumberFinder = new Regex(@".*(?<build>\d{8}_\d{4}).*");

@@ -18,6 +18,11 @@ namespace pyRevitLabs.TargetApps.Revit {
             Assembly MyAssembly, executingAssm;
             string assmDllName = "";
 
+            var f = File.AppendText(@"C:\prlogs.txt");
+            f.WriteLine(args.Name);
+            f.Close();
+
+
             executingAssm = Assembly.GetExecutingAssembly();
             AssemblyName[] refrencedAssemblies = executingAssm.GetReferencedAssemblies();
 
