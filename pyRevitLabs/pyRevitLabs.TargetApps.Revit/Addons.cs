@@ -52,14 +52,14 @@ namespace pyRevitLabs.TargetApps.Revit {
 ";
         public static string GetRevitAddonsFolder(int revitYear, bool allUsers = false) {
             var rootFolder =
-                allUsers ? Environment.SpecialFolder.CommonApplicationData : Environment.SpecialFolder.ApplicationData;
-            return Path.Combine(Environment.GetFolderPath(rootFolder),
+                allUsers ? System.Environment.SpecialFolder.CommonApplicationData : System.Environment.SpecialFolder.ApplicationData;
+            return Path.Combine(System.Environment.GetFolderPath(rootFolder),
                                 "Autodesk", "Revit", "Addins", revitYear.ToString());
         }
 
         public static string GetRevitAddonsFilePath(int revitYear, string addinFileName, bool allusers = false) {
             var rootFolder =
-                allusers ? Environment.SpecialFolder.CommonApplicationData : Environment.SpecialFolder.ApplicationData;
+                allusers ? System.Environment.SpecialFolder.CommonApplicationData : System.Environment.SpecialFolder.ApplicationData;
             return Path.Combine(GetRevitAddonsFolder(revitYear, allUsers: allusers), addinFileName + ".addin");
         }
 

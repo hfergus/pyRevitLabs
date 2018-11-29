@@ -23,8 +23,8 @@ namespace pyRevitLabs.TargetApps.Revit {
         public static string pyRevitAppDataPath {
             get {
                 return Path.Combine(
-                    Environment.GetFolderPath(
-                        Environment.SpecialFolder.ApplicationData),
+                    System.Environment.GetFolderPath(
+                        System.Environment.SpecialFolder.ApplicationData),
                         PyRevitConsts.AppdataDirName
                     );
             }
@@ -35,8 +35,8 @@ namespace pyRevitLabs.TargetApps.Revit {
         public static string pyRevitProgramDataPath {
             get {
                 return Path.Combine(
-                    Environment.GetFolderPath(
-                        Environment.SpecialFolder.CommonApplicationData),
+                    System.Environment.GetFolderPath(
+                        System.Environment.SpecialFolder.CommonApplicationData),
                         PyRevitConsts.AppdataDirName
                     );
             }
@@ -175,7 +175,7 @@ namespace pyRevitLabs.TargetApps.Revit {
             string archiveFilePath = null;
             try {
                 var pkgUrl = PyRevitConsts.GetZipPackageUrl(repoBranch);
-                var pkgDest = Path.Combine(Environment.GetEnvironmentVariable("TEMP"),
+                var pkgDest = Path.Combine(System.Environment.GetEnvironmentVariable("TEMP"),
                                            Path.GetFileName(archiveFileUrl));
                 logger.Debug("Downloading package \"{0}\" to \"{1}\"", pkgUrl, pkgDest);
                 archiveFilePath =
@@ -190,7 +190,7 @@ namespace pyRevitLabs.TargetApps.Revit {
 
             // now extract the file
             if (archiveFilePath != null) {
-                var tempCopy = Path.Combine(Environment.GetEnvironmentVariable("TEMP"), "pyRevitArchive");
+                var tempCopy = Path.Combine(System.Environment.GetEnvironmentVariable("TEMP"), "pyRevitArchive");
 
                 // delete existing
                 if (CommonUtils.VerifyPath(tempCopy)) {
@@ -1440,7 +1440,7 @@ namespace pyRevitLabs.TargetApps.Revit {
                     try {
                         filePath =
                             CommonUtils.DownloadFile(fileOrUri,
-                                                     Path.Combine(Environment.GetEnvironmentVariable("TEMP"),
+                                                     Path.Combine(System.Environment.GetEnvironmentVariable("TEMP"),
                                                                   PyRevitConsts.EnvConfigsExtensionDBFileName)
                             );
                     }

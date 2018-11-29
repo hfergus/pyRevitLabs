@@ -235,7 +235,7 @@ namespace pyRevitManager.Views {
                 CommonUtils.OpenUrl(PyRevitConsts.SupportRepoUrl);
 
             // =======================================================================================================
-            // $ pyrevit info
+            // $ pyrevit env
             // =======================================================================================================
             else if (VerifyCommand(activeKeys, "env")) {
                 PrintClones();
@@ -245,6 +245,7 @@ namespace pyRevitManager.Views {
                 PrintExtensionLookupSources();
                 PrintInstalledRevits();
                 PrintRunningRevits();
+                PrinUserEnv();
             }
 
             // =======================================================================================================
@@ -1218,7 +1219,7 @@ namespace pyRevitManager.Views {
         }
 
         private static void UpdateFromOutsideAndClose(PyRevitClone clone, bool showgui = false) {
-            var userTemp = Environment.ExpandEnvironmentVariables("%TEMP%");
+            var userTemp = System.Environment.ExpandEnvironmentVariables("%TEMP%");
             var sourceUpdater = Path.Combine(GetProcessPath(), updaterExecutive);
             var updaterPath = Path.Combine(userTemp, updaterExecutive);
 
@@ -1246,7 +1247,7 @@ namespace pyRevitManager.Views {
             logger.Debug("Calling outside update and exiting...");
             Process.Start(updaterProcessInfo);
             // and exit self
-            Environment.Exit(0);
+            System.Environment.Exit(0);
         }
 
         private static void PrintHeader(string header) {
@@ -1325,6 +1326,14 @@ namespace pyRevitManager.Views {
         private static void PrintPyRevitPaths() {
             PrintHeader("Cache Directory");
             Console.WriteLine(string.Format("\"{0}\"", PyRevit.pyRevitAppDataPath));
+        }
+
+        private static void PrinUserEnv() {
+            PrintHeader("User Environment");
+            Console.WriteLine(string.Format("%appdata%: \"{0}\"",
+                                            Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)));
+            Console.WriteLine(string.Format("Latest Installed .Net Framework: \"{0}\"",
+                                            UserEnv.GetInstalledDotNetVersion()));
         }
     }
 }
