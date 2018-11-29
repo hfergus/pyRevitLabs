@@ -250,7 +250,7 @@ namespace pyRevitLabs.TargetApps.Revit {
             {"20110309_2315", ( "12.0.0", "2012 First Customer Ship" )},
             {"20110622_0930", ( "12.0.1", "2012 Update Release 1" )},
             {"20110916_2132", ( "12.0.2", "2012 Update Release 2" )},
-            {"20120221_2030", ( "13.0.0", "2013 First Customer Ship" )},
+            {"20120221_2030", ( "12.02.21203", "2013 First Customer Ship" )},
             {"20120716_1115", ( "13.0.1", "2013 Update Release 1" )},
             {"20121003_2115", ( "13.0.2", "2013 Update Release 2" )},
             {"20130531_2115", ( "13.0.3", "2013 Update Release 3" )},
@@ -411,7 +411,7 @@ namespace pyRevitLabs.TargetApps.Revit {
 
         public string DefaultInstallLocation {
             get {
-                return Environment.GetFolderPath(Environment.SpecialFolder.ProgramFiles);
+                return System.Environment.GetFolderPath(System.Environment.SpecialFolder.ProgramFiles);
             }
         }
 
