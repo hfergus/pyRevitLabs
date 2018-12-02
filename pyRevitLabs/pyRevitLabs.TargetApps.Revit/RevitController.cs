@@ -262,7 +262,7 @@ namespace pyRevitLabs.TargetApps.Revit {
             {"20130709_2115", ( "14.0.1", "2014 Update Release 1" )},
             {"20131024_2115", ( "14.0.2", "2014 Update Release 2" )},
             {"20140709_2115", ( "14.0.3", "2014 Update Release 3" )},
-            {"20140223_1515", ( "15.0.0", "2015 First Customer Ship" )},
+            {"20140223_1515", ( "15.0.136.0", "2015 First Customer Ship" )},
             {"20140322_1515", ( "15.0.1", "2015 Update Release 1" )},
             {"20140323_1530", ( "15.0.2", "2015 Update Release 2" )},
             {"20140606_1530", ( "15.0.3", "2015 Update Release 3" )},
@@ -472,7 +472,7 @@ namespace pyRevitLabs.TargetApps.Revit {
         }
 
         public static List<RevitProduct> ListInstalledRevits() {
-            var revitFinder = new Regex(@"^Revit \d\d\d\d");
+            var revitFinder = new Regex(@"^Revit\s.*\d\d\d\d$");
             var installedRevits = new List<RevitProduct>();
             var uninstallKey = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall");
             foreach (var key in uninstallKey.GetSubKeyNames()) {
