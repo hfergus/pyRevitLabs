@@ -188,6 +188,20 @@ namespace pyRevitLabs.Common {
             throw new pyRevitException(String.Format("Can not find commit targetted by tag \"{0}\"", tagName));
         }
 
+        // change origin url to the provided url
+        // @handled @logs
+        public static void SetRemoteUrl(string repoPath, string remoteName, string remoteUrl) {
+            try {
+                var repo = new Repository(repoPath);
+
+                logger.Debug("Setting origin to \"{0}\"...", remoteUrl);
+                repo.Network.Remotes.Update(remoteName, r => r.Url = remoteUrl); ;
+            }
+            catch (Exception ex) {
+                throw new pyRevitException(ex.Message, ex);
+            }
+        }
+
         // check to see if a directory is a git repo
         // @handled @logs
         public static bool IsValidRepo(string repoPath) {
@@ -210,6 +224,21 @@ namespace pyRevitLabs.Common {
             if (IsValidRepo(repoPath))
                 return new Repository(repoPath).Head.Tip.Id.ToString();
             logger.Debug("Can not determine head commit hash for \"{0}\"", repoPath);
+            return null;
+        }
+
+        // get the checkedout branch from repopath
+        // @handled @logs
+        public static string GetRemoteUrl(string repoPath, string remoteName) {
+            if (IsValidRepo(repoPath)) {
+                try {
+                    return new Repository(repoPath).Network.Remotes[remoteName].Url;
+                }
+                catch (Exception ex) {
+                    logger.Debug("Can not determine remote \"{0}\" url for \"{1}\"", remoteName, repoPath);
+                    throw new pyRevitException(ex.Message, ex);
+                }
+            }
             return null;
         }
 

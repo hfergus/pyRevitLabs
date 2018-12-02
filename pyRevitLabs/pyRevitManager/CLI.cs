@@ -52,6 +52,8 @@ namespace pyRevitManager.Views {
         pyrevit clones branch <clone_name> [<branch_name>] [--log=<log_file>]
         pyrevit clones version <clone_name> [<tag_name>] [--log=<log_file>]
         pyrevit clones commit <clone_name> [<commit_hash>] [--log=<log_file>]
+        pyrevit clones origin <clone_name> --reset [--log=<log_file>]
+        pyrevit clones origin <clone_name> [<origin_url>] [--log=<log_file>]
         pyrevit clones update (--all | <clone_name>) [--log=<log_file>] [--gui]
         pyrevit clones deployments <clone_name>
         pyrevit clones engines <clone_name>
@@ -408,6 +410,32 @@ namespace pyRevitManager.Views {
                             else {
                                 Console.WriteLine(string.Format("Clone \"{0}\" is on commit \"{1}\"",
                                                                  clone.Name, clone.Commit));
+                            }
+                        }
+                        else
+                            ReportCloneAsNoGit(clone);
+                    }
+                }
+            }
+
+            // =======================================================================================================
+            // $ pyrevit clones origin <clone_name> [<origin_url>] [--log=<log_file>]
+            // =======================================================================================================
+            else if (VerifyCommand(activeKeys, "clones", "origin")) {
+                var cloneName = TryGetValue(arguments, "<clone_name>");
+                var originUrl = TryGetValue(arguments, "<origin_url>");
+                if (cloneName != null) {
+                    var clone = PyRevit.GetRegisteredClone(cloneName);
+                    if (clone != null) {
+                        if (clone.IsRepoDeploy) {
+                            if (originUrl != null || arguments["--reset"].IsTrue) {
+                                string newUrl = 
+                                    arguments["--reset"].IsTrue ? PyRevitConsts.OriginalRepoPath : originUrl;
+                                clone.SetOrigin(newUrl);
+                            }
+                            else {
+                                Console.WriteLine(string.Format("Clone \"{0}\" origin is at \"{1}\"",
+                                                                clone.Name, clone.Origin));
                             }
                         }
                         else

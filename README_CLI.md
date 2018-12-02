@@ -1,5 +1,7 @@
 # pyRevit Command Line Tool Help
 
+##### Version 0.2.13
+
 `pyrevit` is the command line tool, developed specifically to install and configure pyRevit in your production/development environment. Each section below showcases a specific set of functionality of the command line tool.
 
 - [Getting Help](#getting-help)
@@ -182,6 +184,7 @@ Get info about branch, version and current head commit:
 $ pyrevit clones branch dev     # get current branch of `dev` clone
 $ pyrevit clones version dev    # get current version of `dev` clone
 $ pyrevit clones commit dev     # get current head commit of `dev` clone
+$ pyrevit clones origin dev     # get origin url for `dev` clone
 ```
 
 Setting current branch:
@@ -206,6 +209,19 @@ Setting current head commit:
 pyrevit clones commit <clone_name> [<commit_hash>] [--log=<log_file>]
 
 $ pyrevit clones commit dev b06ec244ce81f521115926924e7322b22b161b54  # changing current commit for `dev` clone
+```
+
+Setting origin remote url:
+
+``` shell
+pyrevit clones origin <clone_name> --reset [--log=<log_file>]
+pyrevit clones origin <clone_name> [<origin_url>] [--log=<log_file>]
+
+$ # changing origin remote url for `dev` clone
+$ pyrevit clones origin dev https://www.git.com/repo.git  
+
+$ # resetting origin remote url back to default for `dev` clone
+$ pyrevit clones origin dev --reset
 ```
 
 #### Updating Clones
@@ -359,7 +375,7 @@ $ pyrevit extensions sources add "https://www.github.com/me/extensions.json"
 
 Use `env` command to get info about the current `pyrevit` environment:
 
-``` shell
+```
 $ pyrevit env
 
 ==> Registered Clones (full git repos)
@@ -392,6 +408,10 @@ Autodesk Revit 2019.1 | Version: 19.1.0.112 | Language: 1033 | Path: "C:\Program
 
 ==> Running Revit Instances
 PID: 61532 | Autodesk Revit 2018.3 | Version: 18.3.0.81 | Language: 0 | Path: "C:\Program Files\Autodesk\Revit 2018"
+
+==> User Environment
+%appdata%: "C:\Users\LeoW10\AppData\Roaming"
+Latest Installed .Net Framework: "4.7.2"
 ```
 
 ## Configuring pyRevit

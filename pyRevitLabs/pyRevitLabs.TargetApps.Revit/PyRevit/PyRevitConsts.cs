@@ -29,6 +29,7 @@ namespace pyRevitLabs.TargetApps.Revit {
         // repo info
         public const string DefaultCloneInstallName = "pyRevit";
         public const string DefaultCopyInstallName = "pyRevitCopy";
+        public const string DefaultCloneRemoteName = "origin";
         public const string OriginalRepoDefaultBranch = "master";
         public const string ExtensionRepoDefaultBranch = "master";
         public const string PyRevitfileFilename = "PyRevitfile";
