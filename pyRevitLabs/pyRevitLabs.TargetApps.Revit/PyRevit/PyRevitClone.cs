@@ -77,6 +77,8 @@ namespace pyRevitLabs.TargetApps.Revit {
 
         public string Commit { get { return GetCommit(ClonePath); } }
 
+        public string Origin { get { return GetOrigin(ClonePath); } }
+
         // equality checks
         public override bool Equals(object obj) {
             var other = obj as PyRevitClone;
@@ -258,6 +260,13 @@ namespace pyRevitLabs.TargetApps.Revit {
             return GitInstaller.GetHeadCommit(clonePath);
         }
 
+        // get origin remote url
+        // @handled @logs
+        public static string GetOrigin(string clonePath) {
+            VerifyCloneValidity(clonePath);
+            return GitInstaller.GetRemoteUrl(clonePath, PyRevitConsts.DefaultCloneRemoteName);
+        }
+
         // checkout branch in git repo
         // @handled @logs
         public static void SetBranch(string clonePath, string branchName) {
@@ -280,6 +289,14 @@ namespace pyRevitLabs.TargetApps.Revit {
             VerifyCloneValidity(clonePath);
             if (commitHash != null)
                 GitInstaller.RebaseToCommit(clonePath, commitHash);
+        }
+
+        // set origin url to new url
+        // @handled @logs
+        public static void SetOrigin(string clonePath, string originUrl) {
+            VerifyCloneValidity(clonePath);
+            if (originUrl != null)
+                GitInstaller.SetRemoteUrl(clonePath, PyRevitConsts.DefaultCloneRemoteName, originUrl);
         }
 
         // static
@@ -379,6 +396,8 @@ namespace pyRevitLabs.TargetApps.Revit {
         public void SetTag(string tagName) => SetTag(ClonePath, tagName);
 
         public void SetCommit(string commitHash) => SetCommit(ClonePath, commitHash);
+
+        public void SetOrigin(string originUrl) => SetOrigin(ClonePath, originUrl);
 
         public PyRevitCloneFromArchiveArgs DeploymentArgs => ReadDeploymentArgs(ClonePath);
 
